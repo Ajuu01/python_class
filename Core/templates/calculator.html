@@ -13,21 +13,30 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-4 col-sm-6">
+            <div class="col-12 ">
                 <div class="card p-5">
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="mb-3">
                             <label for="number_a" class="form-label">Number A</label>
-                            <input type="number" class="form-control" id="number_a">
+                            <input type="number" class="form-control" name="number_a">
                         </div>
                         <div class="mb-3">
                             <label for="number_b" class="form-label">Number B</label>
-                            <input type="number" class="form-control" id="number_b">
+                            <input type="number" class="form-control" name="number_b">
                         </div>
-                        <button type="submit" class="btn btn-primary" onclick="Add()">Add</button>
+                        <button type="submit" class="btn btn-primary" name="add">Add</button>
+                        <button type="submit" class="btn btn-primary" name="sub">Subtraction</button>
+                        <button type="submit" class="btn btn-primary" name="mul">Multiply</button>
+                        <button type="submit" class="btn btn-primary" name="div">Division</button>
                     </form>
-                    <div class="mt-3 fw-bold" id="result"></div>
+                    {%if message%}
+                        <div class="col-12">
+                            <div class="alert alert-success p-4 m-5">
+                                {{message}}
+                            </div>
+                        </div>
+                    {%endif%}
                     
                 </div>
             </div>
@@ -41,7 +50,7 @@
     </script>
 
     <!-- Your custom script -->
-    <script>
+    <!-- <script>
         function Add() {
             event.preventDefault(); // Stop form from submitting
             var num1 = parseInt(document.getElementById("number_a").value);
@@ -59,7 +68,7 @@
             var resultDiv = document.getElementById("result");
             resultDiv.innerText = "Result: " + res;
         }
-    </script>
+    </script> -->
 
 </body>
 
