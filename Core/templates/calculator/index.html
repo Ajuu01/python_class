@@ -1,0 +1,30 @@
+<a href="{% url 'calc_list' %}">List</a>
+<a href="{% url 'calc_create' %}">Add New Item</a>
+<table>
+    <thead>
+        <th>S.N.</th>
+        <th>Number A</th>
+        <th>Number B</th>
+        <th>Operation</th>
+        <th>Operation Status</th>
+        <th>Result</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        {% for i in objects %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.number_a}}</td>
+            <td>{{i.number_b}}</td>
+            <td>{{i.operation}}</td>
+            <td>{{i.operation_status}}</td>
+            <td>{{i.result}}</td>
+            <td>
+                <a href="{% url 'calc_update' i.pk %}">Edit</a>
+                <a href="{% url 'calc_delete' i.pk %}">Delete</a>
+            </td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
